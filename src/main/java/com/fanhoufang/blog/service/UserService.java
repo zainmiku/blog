@@ -1,7 +1,7 @@
 package com.fanhoufang.blog.service;
 
+import com.fanhoufang.blog.entity.po.User;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.fanhoufang.blog.dao.entity.User;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.fanhoufang.blog.dao.entity.User;
  * </p>
  *
  * @author fan
- * @since 2023-02-07 09:34:02
+ * @since 2023-02-11
  */
 public interface UserService extends IService<User> {
 

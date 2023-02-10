@@ -1,7 +1,7 @@
-package com.fanhoufang.blog.dao.mapper;
+package com.fanhoufang.blog.mapper;
 
+import com.fanhoufang.blog.entity.po.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.fanhoufang.blog.dao.entity.User;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.fanhoufang.blog.dao.entity.User;
  * </p>
  *
  * @author fan
- * @since 2023-02-07 09:34:02
+ * @since 2023-02-11
  */
 public interface UserMapper extends BaseMapper<User> {
 

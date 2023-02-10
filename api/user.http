@@ -1,5 +1,6 @@
-GET http://localhost:8888/user/test
+
+@Base = localhost:8080
+GET http://{{Base}}/user/test
+
 ###
-GET http://localhost:8888/user/test2
-###
-GET http://localhost:8888/user/getUser
+GET http://{{Base}}/user/getUser

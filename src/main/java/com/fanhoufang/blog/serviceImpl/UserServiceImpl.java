@@ -1,11 +1,10 @@
 package com.fanhoufang.blog.serviceImpl;
 
-import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.fanhoufang.blog.dao.entity.User;
-import com.fanhoufang.blog.dao.mapper.UserMapper;
+import com.fanhoufang.blog.entity.po.User;
+import com.fanhoufang.blog.mapper.UserMapper;
 import com.fanhoufang.blog.service.UserService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -13,7 +12,7 @@ import com.fanhoufang.blog.service.UserService;
  * </p>
  *
  * @author fan
- * @since 2023-02-07 09:34:02
+ * @since 2023-02-11
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {

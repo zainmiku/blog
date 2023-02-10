@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class BlogApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void generator() {
+		CodeGenerator.build("m_user").generate();
 	}
 
 }

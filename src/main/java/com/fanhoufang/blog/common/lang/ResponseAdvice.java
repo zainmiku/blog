@@ -41,9 +41,9 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         }
 
 	    //处理字符串类型数据，如果Controller返回String的话,进行处理
-	    if (o instanceof String) {
+	    if (o instanceof String msg) {
 		    try {
-			    return objectMapper.writeValueAsString(Result.success((String)o));
+			    return objectMapper.writeValueAsString(Result.success(msg));
 		    } catch (JsonProcessingException e) {
 			    e.printStackTrace();
 		    }

@@ -7,10 +7,14 @@ spring:
     password: root
 
 server:
-  port: 8888
+  port: 8080
 
 #by zhengkai.blog.csdn.net
 #mybatis-plus配置控制台打印完整带参数SQL语句
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+--- #--------------------接口文档配置---------------------------
+springdoc:
+  api-docs:
+    enabled: true

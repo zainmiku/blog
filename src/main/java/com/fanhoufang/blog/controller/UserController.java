@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fanhoufang.blog.common.constant.ReturnCode;
-import com.fanhoufang.blog.common.exception.BusinessException;
-import com.fanhoufang.blog.dao.entity.User;
+import com.fanhoufang.blog.entity.po.User;
 import com.fanhoufang.blog.service.UserService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 
 /**
@@ -20,8 +19,9 @@ import jakarta.annotation.Resource;
  * </p>
  *
  * @author fan
- * @since 2023-02-07 09:34:02
+ * @since 2023-02-11
  */
+@Tag(name = "用户")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -32,13 +32,9 @@ public class UserController {
     public String test(){
         return "test ok!";
     }
-    @GetMapping("test2")
-    public String test2(){
-       throw new BusinessException(ReturnCode.UNSUPPORTED_GRANT_TYPE);
-    }
     @GetMapping("getUser")
     public List<User> getUser(){
-       return userService.list();
+        return userService.list();
     }
 
 }
