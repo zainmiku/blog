@@ -4,3 +4,22 @@ GET http://{{Base}}/user/test
 
 ###
 GET http://{{Base}}/user/getUser
+###
+GET http://{{Base}}/user/getOne?userId=8
+###
+POST http://{{Base}}/user/register
+content-type: application/json
+
+{
+    "username": "哇哇哇哇",
+    "password": "5555555555"
+}
+
+###
+POST http://{{Base}}/user/changePassword
+content-type: application/json
+
+{
+    "userId": "6",
+    "password": "32131123"
+}

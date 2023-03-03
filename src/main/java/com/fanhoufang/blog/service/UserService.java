@@ -1,7 +1,7 @@
 package com.fanhoufang.blog.service;
 
-import com.fanhoufang.blog.entity.po.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.fanhoufang.blog.entity.po.User;
 
 /**
  * <p>
@@ -12,5 +12,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2023-02-11
  */
 public interface UserService extends IService<User> {
+
+    User getOne(Integer userId);
+
+    User register(User user);
+    
+    String changePassword(User user);
+
+
 
 }
