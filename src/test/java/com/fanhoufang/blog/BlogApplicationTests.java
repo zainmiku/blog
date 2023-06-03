@@ -14,7 +14,7 @@ import org.springframework.data.redis.core.ValueOperations;
 public class BlogApplicationTests {
 	@Test
 	void generator() {
-		CodeGenerator.build("m_user").generate();
+		CodeGenerator.build("blog").generate();
 	}
 	@Test
     void set(@Autowired RedisTemplate<Object,Object> redisTemplate) {

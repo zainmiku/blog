@@ -1,11 +1,16 @@
 package com.fanhoufang.blog.serviceImpl;
 
+import java.util.Objects;
+
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fanhoufang.blog.common.constant.ReturnCode;
+import com.fanhoufang.blog.common.exception.BusinessException;
+import com.fanhoufang.blog.common.utils.RSAUtils;
 import com.fanhoufang.blog.entity.po.User;
 import com.fanhoufang.blog.mapper.UserMapper;
 import com.fanhoufang.blog.service.UserService;
@@ -44,6 +49,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public String changePassword(User user) {
         this.lambdaUpdate().set(User::getPassword, user.getPassword()).eq(User::getUserId, user.getUserId()).update();
         return "修改成功";
+    }
+
+    @Override
+    public User login(User user) throws Exception {
+        // TODO Auto-generated method stub
+        String passwd = RSAUtils.decrypt(user.getPassword());
+        User one = this.lambdaQuery().eq(User::getUsername, user.getUsername()).eq(User::getPassword, passwd).one();
+        if(Objects.isNull(one)){
+            throw new BusinessException(ReturnCode.CD100);
+        }
+        return null;
     }
 
 }

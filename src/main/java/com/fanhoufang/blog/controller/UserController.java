@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fanhoufang.blog.common.utils.RSAUtils;
 import com.fanhoufang.blog.entity.po.User;
 import com.fanhoufang.blog.service.UserService;
 
@@ -34,6 +35,22 @@ public class UserController {
     public String test(){
         return "test ok!";
     }
+
+    @GetMapping("getPublicKy")
+    public String getPublicKy(){
+        return RSAUtils.getPublicKeyString();
+    }
+
+    @GetMapping("encryption")
+    public String encryption(String str) throws Exception{
+        return RSAUtils.encryption(str);
+    }
+    
+    @PostMapping("login")
+    public User login(@RequestBody User user) throws Exception{
+        return userService.login(user);
+    }
+
     @GetMapping("getUser")
     public List<User> getUser(){
         return userService.list();

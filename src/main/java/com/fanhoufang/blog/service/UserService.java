@@ -19,6 +19,8 @@ public interface UserService extends IService<User> {
     
     String changePassword(User user);
 
+    User login(User user) throws Exception;
+
 
 
 }

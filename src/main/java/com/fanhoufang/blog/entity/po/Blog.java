@@ -6,7 +6,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * <p>
@@ -14,26 +15,29 @@ import lombok.Data;
  * </p>
  *
  * @author fan
- * @since 2023-02-11
+ * @since 2023-06-03
  */
-@Data
-@TableName("blog.user")
-public class User implements Serializable {
+@Getter
+@Setter
+@TableName("blog.blog")
+public class Blog implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "user_id", type = IdType.AUTO)
+    @TableId(value = "blog_id", type = IdType.AUTO)
+    private Integer blogId;
+
     private Integer userId;
 
     /**
-     * 用户名
+     * 简介
      */
-    private String username;
+    private String introduction;
 
     /**
-     * 密码
+     * 正文
      */
-    private String password;
+    private String text;
 
 
 }
