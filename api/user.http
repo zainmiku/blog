@@ -2,6 +2,20 @@
 @Base = localhost:8080
 GET http://{{Base}}/user/test
 
+### 获取公钥
+GET http://{{Base}}/user/getPublicKy
+
+### 加密
+GET http://{{Base}}/user/encryption?str=fanhoufang
+
+### 登录
+POST http://{{Base}}/user/login
+content-type: application/json
+
+{
+    "username": "www",
+    "password": "ZsQ5luImGx6XLJKKFtbbnQKWeFq2E+5PWXyVc/uwfYKeuDsS4pdJQrl81JC+VUqzQBhHV1oV/g5nejGyk+SGID7/Z3Q/mhE2hxdt7A/Vdz1MBg7YkmaWtqqllEXaI6jcTJqGWIshCZ4X7kFa0uCOAIDp4tyZPExSJQvI+gdQyACsDgsL0a88OE4KGdGmhduQf5SzSm7kQijRQk0cRBDMXHze/IkmxOfaIrHbBSq9nexWt2dUoAUxJ2Kv6xAvVd9RYo6aU7rrwueB7VJYON7ScaxNJT4Hbh4jNaJC872p/720Nk6bR8BEIMXHe8pe3nx1+qpM6tHiJoJIhTCldVotrA=="
+}
 ###
 GET http://{{Base}}/user/getUser
 ###
