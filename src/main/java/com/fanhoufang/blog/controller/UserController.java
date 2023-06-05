@@ -47,7 +47,7 @@ public class UserController {
     }
     
     @PostMapping("login")
-    public User login(@RequestBody User user) throws Exception{
+    public String login(@RequestBody User user) throws Exception{
         return userService.login(user);
     }
 

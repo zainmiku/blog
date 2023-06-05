@@ -1,9 +1,5 @@
 package com.fanhoufang.blog.common.exception;
 
-import com.fanhoufang.blog.common.lang.Result;
-
-import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -12,8 +8,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.fanhoufang.blog.common.lang.Result;
+
+import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
-@RestControllerAdvice
+@RestControllerAdvice(basePackages = "com.fanhoufang.blog.controller")
 public class GlobalExceptionHander {
 
 

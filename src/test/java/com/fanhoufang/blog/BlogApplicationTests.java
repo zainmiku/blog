@@ -1,6 +1,9 @@
 package com.fanhoufang.blog;
 
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,27 +11,65 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
-
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
 @SpringBootTest
 public class BlogApplicationTests {
-	@Test
-	void generator() {
-		CodeGenerator.build("blog").generate();
-	}
+	// @Test
+	// void generator() {
+	// 	CodeGenerator.build("blog").generate();
+	// }
 	@Test
     void set(@Autowired RedisTemplate<Object,Object> redisTemplate) {
         ValueOperations<Object,Object> ops = redisTemplate.opsForValue();;
         ops.set("a","123");
 
     }
-
     @Test
     void get(@Autowired RedisTemplate<Object,Object> redisTemplate) {
         ValueOperations<Object,Object> ops = redisTemplate.opsForValue();
         System.out.println(ops.get("a"));
 
     }
+
+    /**
+     * jwt生成token
+     */
+
+    @Test
+    void generateToken() {
+        Map<String, Object> map = new HashMap<>();
+
+        Calendar instance = Calendar.getInstance();
+        instance.add(Calendar.SECOND, 2000);
+
+        String token = JWT.create().withHeader(map) //header
+                .withClaim("userId", 1)//payload
+                .withClaim("username", "ww")//payload
+                .withExpiresAt(instance.getTime())//指定令牌的过期时间
+                .sign(Algorithm.HMAC256("!Q@W#E$R")) //签名
+                ;
+        System.out.println(token);
+    }
+
+        /**
+     * jwt解析token
+     */
+
+     @Test
+     void analysisToken() {
+
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODU4OTAzMjYsInVzZXJJZCI6MSwidXNlcm5hbWUiOiJ3dyJ9.8bq_g2qUzJ2H-Enl02F5L97kQDWOUkxjG_le0RfG1ms";
+ 
+        JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256("!Q@W#E$R")).build();
+        DecodedJWT decodedJWT = jwtVerifier.verify(token);
+        System.out.println("用户Id: " + decodedJWT.getClaim("userId").asInt());
+        System.out.println("用户名：" + decodedJWT.getClaim("username").asString());
+        System.out.println("过期时间：" + decodedJWT.getExpiresAt());
+     }
 
     
     @Test

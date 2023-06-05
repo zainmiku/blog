@@ -16,7 +16,7 @@ import jakarta.annotation.Resource;
 
 
 
-@RestControllerAdvice
+@RestControllerAdvice(basePackages = "com.fanhoufang.blog.controller")
 public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
 	@Resource

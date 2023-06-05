@@ -15,14 +15,14 @@
 
     <!-- 测试环境+开发环境. 多个使用逗号隔开. -->
     <springProfile name="dev,test">
-        <logger name="com.fanhoufang.blog.controller" level="DEBUG" additivity="false">
+        <logger name="com.fanhoufang.blog" level="DEBUG" additivity="false">
             <appender-ref ref="console"/>
         </logger>
     </springProfile>
 
     <!-- 生产环境. -->
     <springProfile name="pro">
-        <logger name="com.fanhoufang.blog.controller" level="INFO" additivity="false">
+        <logger name="com.fanhoufang.blog" level="INFO" additivity="false">
             <appender-ref ref="console"/>
         </logger>
     </springProfile>
