@@ -6,8 +6,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * <p>
@@ -17,8 +16,7 @@ import lombok.Setter;
  * @author fan
  * @since 2023-06-03
  */
-@Getter
-@Setter
+@Data
 @TableName("blog.blog")
 public class Blog implements Serializable {
 

@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<mybatis-plus.version>3.5.3</mybatis-plus.version>
+		<mybatis-plus-join.version>1.4.5</mybatis-plus-join.version>
 		<mybatis-plus-generator.version>3.5.1</mybatis-plus-generator.version>
 		<springdoc-openapi.version>2.0.0</springdoc-openapi.version>
 	</properties>
@@ -60,6 +61,11 @@
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>${mybatis-plus.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.yulichang</groupId>
+			<artifactId>mybatis-plus-join-boot-starter</artifactId>
+			<version>${mybatis-plus-join.version}</version>
+		</dependency>		
 
 		<!-- mybatis-plus 代码生成器 -->
 		<dependency>

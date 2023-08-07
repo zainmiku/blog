@@ -1,7 +1,7 @@
 package com.fanhoufang.blog.mapper;
 
 import com.fanhoufang.blog.entity.po.Blog;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.github.yulichang.base.MPJBaseMapper;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author fan
  * @since 2023-06-03
  */
-public interface BlogMapper extends BaseMapper<Blog> {
+public interface BlogMapper extends MPJBaseMapper<Blog> {
 
 }
