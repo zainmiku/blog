@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import com.fanhoufang.blog.mapper.UserMapper;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 
 import jakarta.annotation.Resource;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
@@ -31,20 +34,61 @@ public class BlogApplicationTests {
     @Resource
     private UserMapper userMapper;
 
-        /**
+    private static String MAN = "man";
+    private static String WOMAN = "woman";
+
+    @Data
+    static class Person {
+        private String gender;
+        private String name;
+
+        private static Map<String, Consumer<String>> FUNC_MAP = new ConcurrentHashMap<>();
+        static {
+            FUNC_MAP.put(MAN, person -> {
+                System.out.println(person + "应该去男厕所");
+            });
+            FUNC_MAP.put(WOMAN, person -> {
+                System.out.println(person + "应该去女厕所");
+            });
+        }
+
+        public void goToWC() {
+            FUNC_MAP.get(gender).accept(name);
+        }
+    }
+
+    static class PersonFactory {
+        public static Person initPerson(String name, String gender) {
+            Person p = new Person();
+            p.setName(name);
+            p.setGender(gender);
+            return p;
+        }
+    }
+
+    @Test
+    void testFactory() {
+        Person p = PersonFactory.initPerson("张三", MAN);
+        Person p2 = PersonFactory.initPerson("张三他老婆", WOMAN);
+        p.goToWC();
+        p2.goToWC();
+    }
+
+    /**
      * 支持无限嵌套查询
      */
     @Test
     void testJoinCollection() {
-        //和MyBatis plus一致，MPJLambdaWrapper的泛型必须是主表的泛型，并且要用主表的Mapper来调用
+        // 和MyBatis plus一致，MPJLambdaWrapper的泛型必须是主表的泛型，并且要用主表的Mapper来调用
         MPJLambdaWrapper<User> wrapper = new MPJLambdaWrapper<User>()
                 .selectAll(User.class)
-                //全部映射 不用考虑字段名重复问题(比如 id), 会对重复列自动添加别名
+                // 全部映射 不用考虑字段名重复问题(比如 id), 会对重复列自动添加别名
                 .selectCollection(Blog.class, UserDTO::getBlogList)
                 .leftJoin(Blog.class, Blog::getUserId, User::getUserId);
-        List<UserDTO> dtoList= userMapper.selectJoinList(UserDTO.class, wrapper);
+        List<UserDTO> dtoList = userMapper.selectJoinList(UserDTO.class, wrapper);
         log.info(dtoList.toString());
     }
+
     @Test
     void generator() {
         CodeGenerator.build("blog").generate();
