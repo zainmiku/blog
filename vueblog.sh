@@ -1,7 +1,7 @@
 #!/bin/sh
  
 ##此处是打包的jar包名称，不带.jar后缀
-API_NAME=blog-java-0.0.1-SNAPSHOT
+API_NAME='blog-java-0.0.1-SNAPSHOT'
 JAR_NAME=$API_NAME\.jar
 #PID  代表是PID文件
 PID=$API_NAME\.pid
