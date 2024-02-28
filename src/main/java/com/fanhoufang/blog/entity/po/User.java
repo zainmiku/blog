@@ -1,29 +1,23 @@
 package com.fanhoufang.blog.entity.po;
 
-import java.io.Serializable;
-
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
+import com.fanhoufang.blog.entity.Base;
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
- * <p>
- * 
- * </p>
- *
  * @author fan
  * @since 2023-02-11
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("blog.user")
-public class User implements Serializable {
+@Builder
+public class User extends Base {
 
-    private static final long serialVersionUID = 1L;
-
-    @TableId(value = "user_id", type = IdType.AUTO)
-    private Integer userId;
+    /**
+     * 用户id
+     */
+    private String userId;
 
     /**
      * 用户名
@@ -31,9 +25,12 @@ public class User implements Serializable {
     private String username;
 
     /**
-     * 密码
+     * 用户密码
      */
     private String password;
-
+    /**
+     * 用户手机号
+     */
+    private String phone;
 
 }
