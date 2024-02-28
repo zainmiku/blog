@@ -31,6 +31,7 @@ public class WebConfig implements WebMvcConfigurer {
 //                .addPathPatterns("/v1/report/**") // 拦截所有请求
 //                .addPathPatterns("/test/**") // 拦截所有请求
                 .excludePathPatterns("/login/*")
+                .excludePathPatterns("/test/save")
                 .excludePathPatterns("/doc.html/**")
                 .excludePathPatterns("/doc.html")
                 .excludePathPatterns("/webjars/**")

@@ -4,6 +4,7 @@ import com.fanhoufang.blog.entity.Base;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.data.annotation.Id;
 
 /**
  * @author fan
@@ -17,6 +18,7 @@ public class User extends Base {
     /**
      * 用户id
      */
+    @Id
     private String userId;
 
     /**

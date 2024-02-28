@@ -30,4 +30,7 @@ public class ServiceException extends AppRuntimeException {
         super(codeMsg);
     }
 
+    public ServiceException(CommonStatusCode codeMsg, String msg) {
+        super(codeMsg.getCode(), msg);
+    }
 }
